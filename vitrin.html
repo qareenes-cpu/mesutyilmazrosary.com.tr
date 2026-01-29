@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitrin | Mesut Yılmaz</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .vitrin-header {
+            padding-top: 150px;
+            text-align: left;
+        }
+
+        .vitrin-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 80px 0;
+            justify-content: start;
+        }
+
+        .loading {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            padding: 100px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVIGATION -->
+    <nav class="main-nav">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/logo.svg" alt="Mesut Yılmaz">
+            </a>
+            <div class="nav-links" id="nav-links-container">
+                <a href="vitrin.html" class="active">Vitrin</a>
+                <a href="sorgula.html">Sorgula</a>
+                <a href="iletisim.html">İletişim</a>
+                <a href="https://www.instagram.com/46mesut_yilmaz?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                    target="_blank" class="instagram-link" title="Instagram">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+                <a href="login.html" class="admin-icon-link" title="Yönetim">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </a>
+            </div>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menü">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <header class="vitrin-header">
+            <h1 class="hero-title">Tüm Koleksiyon</h1>
+            <p class="hero-subtitle">Ustalıklı ellerden çıkan, her biri eşşiz eserler.</p>
+        </header>
+
+        <div id="product-list" class="vitrin-grid">
+            <div class="loading">Eserler yükleniyor...</div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p class="copyright">© 2026 Mesut Yılmaz Tesbih Vitrini. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script>
+        async function fetchProducts() {
+            try {
+                const response = await fetch('/api/products');
+                const products = await response.json();
+                renderProducts(products);
+            } catch (err) {
+                console.error('Error fetching products:', err);
+                document.getElementById('product-list').innerHTML = '<div class="loading">Eserler yüklenirken bir hata oluştu.</div>';
+            }
+        }
+
+        function renderProducts(products) {
+            const container = document.getElementById('product-list');
+            container.innerHTML = '';
+
+            if (products.length === 0) {
+                container.innerHTML = '<div class="loading">Henüz sergilenecek eser bulunmuyor.</div>';
+                return;
+            }
+
+            products.forEach(product => {
+                const card = document.createElement('a');
+                card.href = `urun-detay.html?id=${product.id}`;
+                card.className = 'showcase-card visible';
+                card.style.textDecoration = 'none';
+                card.style.display = 'block';
+                card.innerHTML = `
+                    <div class="card-image-wrapper">
+                        <img src="${product.image_url || 'assets/placeholder.png'}" alt="${product.name}" class="card-img">
+                    </div>
+                    <div class="card-info">
+                        <h3>${product.name}</h3>
+                        <p class="master-name">${product.master || 'Mesut Yılmaz'}</p>
+                        <span class="collection-tag">${product.collection || 'Özel Seri'}</span>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', fetchProducts);
+    </script>
+    <script src="mobile.js"></script>
+</body>
+
+</html>

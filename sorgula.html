@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorgula | Mesut Yılmaz</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .search-container {
+            padding-top: 150px;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .search-box {
+            margin-top: 40px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 15px 25px;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition-smooth);
+        }
+
+        .search-input:focus {
+            border-color: #0071e3;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .search-btn {
+            padding: 15px 30px;
+            border-radius: 40px;
+            background: #0071e3;
+            color: #fff;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .search-btn:hover {
+            background: #0077ed;
+        }
+
+        #result-container {
+            margin-top: 60px;
+        }
+
+        .result-card {
+            background: var(--bg-secondary);
+            border-radius: 30px;
+            padding: 40px;
+            text-align: left;
+            display: none;
+            animation: fadeInUp 0.8s forwards;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .error-msg {
+            color: #ff453a;
+            margin-top: 20px;
+            display: none;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVIGATION -->
+    <nav class="main-nav">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/logo.svg" alt="Mesut Yılmaz">
+            </a>
+            <div class="nav-links" id="nav-links-container">
+                <a href="vitrin.html">Vitrin</a>
+                <a href="sorgula.html" class="active">Sorgula</a>
+                <a href="iletisim.html">İletişim</a>
+                <a href="https://www.instagram.com/46mesut_yilmaz?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                    target="_blank" class="instagram-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" style="width:18px; height:18px;">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+                <a href="login.html" class="admin-icon-link" title="Yönetim">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" style="width:18px; height:18px;">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </a>
+            </div>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menü">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="search-container">
+            <h1 class="hero-title" style="font-size: 3rem;">Ürün Sorgulama</h1>
+            <p class="hero-subtitle">Ürün kodu veya isim ile eserinizi doğrulayın.</p>
+
+            <form id="search-form" class="search-box">
+                <input type="text" id="search-input" class="search-input" placeholder="Seri No" required>
+                <button type="submit" class="search-btn">Sorgula</button>
+            </form>
+            <p id="error-msg" class="error-msg">Ürün bulunamadı veya bir bağlantı hatası oluştu. Lütfen tekrar deneyin.
+            </p>
+
+            <div id="result-container">
+                <div id="result-card" class="result-card">
+                    <h2 id="res-name"
+                        style="margin-bottom: 25px; font-family: 'Inter', sans-serif; font-size: 1.8rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">
+                        Ürün Adı</h2>
+                    <div class="result-layout" style="display: grid; grid-template-columns: 250px 1fr; gap: 40px;">
+                        <img id="res-img" src="" alt=""
+                            style="width: 100%; border-radius: 20px; object-fit: cover; border: 1px solid rgba(255,255,255,0.05);">
+                        <div class="res-details">
+                            <div class="attr-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                                <p><strong>Seri No:</strong> <br><span id="res-series"
+                                        style="color: var(--text-secondary);"></span></p>
+                                <p><strong>Sanatkar:</strong> <br><span id="res-master"
+                                        style="color: var(--text-secondary);"></span></p>
+                                <p><strong>Materyal:</strong> <br><span id="res-mat"
+                                        style="color: var(--text-secondary);"></span></p>
+                                <p><strong>Tane Sayısı:</strong> <br><span id="res-bead-count"
+                                        style="color: var(--text-secondary);"></span></p>
+                                <p><strong>Tane Boyutu:</strong> <br><span id="res-bead-size"
+                                        style="color: var(--text-secondary);"></span></p>
+                                <p><strong>İmame Motifi:</strong> <br><span id="res-imame-motif"
+                                        style="color: var(--text-secondary);"></span></p>
+                                <p><strong>İmame Boyutu:</strong> <br><span id="res-imame-size"
+                                        style="color: var(--text-secondary);"></span></p>
+                                <p><strong>Stok Kodu:</strong> <br><span id="res-stock"
+                                        style="color: var(--text-secondary);"></span></p>
+                            </div>
+                            <p style="margin-top: 25px; color: #fff; font-size: 0.95rem; line-height: 1.6;"
+                                id="res-desc"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p class="copyright">© 2026 Mesut Yılmaz Tesbih Vitrini. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script>
+        const form = document.getElementById('search-form');
+        const input = document.getElementById('search-input');
+        const card = document.getElementById('result-card');
+        const error = document.getElementById('error-msg');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const val = input.value.trim();
+            if (!val) return;
+
+            card.style.display = 'none';
+            error.style.display = 'none';
+
+            try {
+                // Try direct code match first
+                let response = await fetch(`/api/products/${encodeURIComponent(val)}`);
+                let data = await response.json();
+
+                if (response.status === 404) {
+                    // Try general search
+                    response = await fetch(`/api/search?q=${encodeURIComponent(val)}`);
+                    data = await response.json();
+                }
+
+                const product = Array.isArray(data) ? data[0] : data;
+
+                if (!product || product.error || (Array.isArray(data) && data.length === 0)) {
+                    error.style.display = 'block';
+                } else {
+                    renderResult(product);
+                }
+            } catch (err) {
+                console.error(err);
+                error.style.display = 'block';
+            }
+        });
+
+        function renderResult(p) {
+            document.getElementById('res-name').textContent = p.name;
+            document.getElementById('res-img').src = p.image_url || 'assets/placeholder.png';
+            document.getElementById('res-img').alt = p.name;
+            document.getElementById('res-series').textContent = p.series_number || '-';
+            document.getElementById('res-master').textContent = p.master || 'Mesut Yılmaz';
+            document.getElementById('res-mat').textContent = p.material || '-';
+            document.getElementById('res-bead-count').textContent = p.bead_count || '-';
+            document.getElementById('res-bead-size').textContent = p.bead_size || '-';
+            document.getElementById('res-imame-motif').textContent = p.imame_motif || '-';
+            document.getElementById('res-imame-size').textContent = p.imame_size || '-';
+            document.getElementById('res-stock').textContent = p.stock_code || p.product_code;
+            document.getElementById('res-desc').textContent = p.description || '';
+
+            card.style.display = 'block';
+        }
+    </script>
+    <script src="script.js"></script>
+    <script src="mobile.js"></script>
+</body>
+
+</html>
