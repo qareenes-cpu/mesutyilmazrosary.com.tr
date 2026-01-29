@@ -1,0 +1,15 @@
+<svg width="200" height="300" viewBox="0 0 200 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Symmetrically balanced silhouette of the provided museum case -->
+  <path d="M100 10 
+           L165 70 
+           L155 90 
+           C165 140 155 190 135 230
+           L128 265 
+           H145 V285 
+           H55 V265 
+           H72 
+           L65 230 
+           C45 190 35 140 45 90 
+           L35 70 
+           L100 10 Z" fill="white"/>
+</svg>
