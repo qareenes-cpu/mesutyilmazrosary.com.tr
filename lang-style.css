@@ -1,0 +1,106 @@
+/* --- LANGUAGE SELECTOR --- */
+.lang-dropdown {
+    position: relative;
+    margin-left: 20px;
+}
+
+.lang-btn {
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition-smooth);
+}
+
+.lang-btn:hover {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.lang-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 180px;
+    background: #0a0a0a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 10px 0;
+    margin-top: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: var(--transition-smooth);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    z-index: 1005;
+}
+
+.lang-dropdown:hover .lang-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.lang-option {
+    display: block;
+    padding: 10px 20px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: var(--transition-smooth);
+}
+
+.lang-option:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    padding-left: 25px;
+    /* Subtle movement */
+}
+
+.lang-option.active {
+    color: var(--accent-gold, #d4af37);
+    font-weight: 600;
+}
+
+/* Mobile responsiveness for Language Selector */
+@media (max-width: 768px) {
+    .lang-dropdown {
+        margin-left: 0;
+        margin-top: 20px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .lang-btn {
+        width: 100%;
+        justify-content: center;
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .lang-menu {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        background: transparent;
+        border: none;
+        height: 0;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        margin-top: 0;
+    }
+
+    .lang-dropdown.active .lang-menu {
+        height: auto;
+        opacity: 1;
+        visibility: visible;
+        padding-top: 10px;
+    }
+}
