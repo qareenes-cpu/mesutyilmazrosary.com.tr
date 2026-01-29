@@ -7,11 +7,11 @@
     <title>Mesut Yılmaz | Tesbih Vitrini</title>
     <meta name="description" content="El işçiliği, özel koleksiyon tesbihlerin sergilendiği arşiv niteliğinde vitrin.">
     <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts: Inter (Clean Sans), Playfair Display (Luxury Serif) -->
+    <!-- Google Fonts: Inter (Clean Sans), Playfair Display (Luxury Serif), Amiri (Arabic) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Amiri:wght@400;700&display=swap"
         rel="stylesheet">
 </head>
 
@@ -24,9 +24,28 @@
                 <img src="assets/logo.svg" alt="Mesut Yılmaz">
             </a>
             <div class="nav-links" id="nav-links-container">
-                <a href="vitrin.html">Vitrin</a>
-                <a href="sorgula.html">Sorgula</a>
-                <a href="iletisim.html">İletişim</a>
+                <a href="vitrin.html" data-i18n="nav_vitrin">Vitrin</a>
+                <a href="sorgula.html" data-i18n="nav_sorgula">Sorgula</a>
+                <a href="iletisim.html" data-i18n="nav_iletisim">İletişim</a>
+
+                <!-- Language Selector -->
+                <div class="lang-dropdown">
+                    <button class="lang-btn">
+                        <span id="current-lang-display">TR</span>
+                        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2"
+                            fill="none">
+                            <path d="M6 9l6 6 6-6" />
+                        </svg>
+                    </button>
+                    <div class="lang-menu">
+                        <a href="#" class="lang-option" data-lang="tr">TR - Türkçe</a>
+                        <a href="#" class="lang-option" data-lang="en">EN - English</a>
+                        <a href="#" class="lang-option" data-lang="de">DE - Deutsch</a>
+                        <a href="#" class="lang-option" data-lang="fr">FR - Français</a>
+                        <a href="#" class="lang-option" data-lang="ar">AR - العربية</a>
+                    </div>
+                </div>
+
                 <a href="https://www.instagram.com/46mesut_yilmaz?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                     target="_blank" class="instagram-link">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -59,19 +78,20 @@
         </div>
 
         <div class="hero-content fade-in-up">
-            <h1 class="hero-title">Zamanın Ötesinde</h1>
+            <h1 class="hero-title" data-i18n="hero_title">Zamanın Ötesinde</h1>
             <h2
                 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--accent-gold); margin-top: -10px; margin-bottom: 20px; letter-spacing: 0.2em; text-transform: uppercase;">
                 Mesut Yılmaz Rosary</h2>
-            <p class="hero-subtitle">Geçmişin ustalığı, bugünün mirası. Her bir parça, bir hikaye anlatır.</p>
-            <a href="#vitrin" class="btn-hero">Koleksiyonu Keşfet &rarr;</a>
+            <p class="hero-subtitle" data-i18n="hero_subtitle">Geçmişin ustalığı, bugünün mirası. Her bir parça, bir
+                hikaye anlatır.</p>
+            <a href="#vitrin" class="btn-hero" data-i18n="btn_explore">Koleksiyonu Keşfet &rarr;</a>
         </div>
     </header>
 
     <!-- 2. ÖNE ÇIKAN ESERLER (VİTRİN) -->
     <section id="vitrin" class="showcase section-padding">
         <div class="container">
-            <h2 class="section-title text-center">En İyiler</h2>
+            <h2 class="section-title text-center" data-i18n="section_best">En İyiler</h2>
             <div class="showcase-grid">
                 <!-- Card 1 -->
                 <article class="showcase-card">
@@ -79,9 +99,9 @@
                         <img src="assets/tesbih-1.png" alt="Osmanlı Kehribar" class="card-img">
                     </div>
                     <div class="card-info">
-                        <h3>Osmanlı Sıkma Kehribar</h3>
+                        <h3 data-i18n="card_1_title">Osmanlı Sıkma Kehribar</h3>
                         <p class="master-name">Mesut Yılmaz Koleksiyonu</p>
-                        <span class="collection-tag">Saray İşçiliği</span>
+                        <span class="collection-tag" data-i18n="card_1_desc">Saray İşçiliği</span>
                     </div>
                 </article>
                 <!-- Card 2 -->
@@ -90,9 +110,9 @@
                         <img src="assets/tesbih-2.png" alt="Oltu Taşı" class="card-img">
                     </div>
                     <div class="card-info">
-                        <h3>Gümüş İşlemeli Oltu</h3>
+                        <h3 data-i18n="card_2_title">Gümüş İşlemeli Oltu</h3>
                         <p class="master-name">Özel Tasarım</p>
-                        <span class="collection-tag">Klasik Seri</span>
+                        <span class="collection-tag" data-i18n="card_2_desc">Klasik Seri</span>
                     </div>
                 </article>
                 <!-- Card 3 -->
@@ -101,14 +121,14 @@
                         <img src="assets/tesbih-3.png" alt="Kuka" class="card-img">
                     </div>
                     <div class="card-info">
-                        <h3>Usta İşlemeli Kuka</h3>
+                        <h3 data-i18n="card_3_title">Usta İşlemeli Kuka</h3>
                         <p class="master-name">Eski Kuka</p>
-                        <span class="collection-tag">Doğal Doku</span>
+                        <span class="collection-tag" data-i18n="card_3_desc">Doğal Doku</span>
                     </div>
                 </article>
             </div>
             <div class="view-all-wrapper fade-in-up">
-                <a href="vitrin.html" class="btn-view-all">Tüm Eserleri Gör &rarr;</a>
+                <a href="vitrin.html" class="btn-view-all" data-i18n="btn_view_all">Tüm Eserleri Gör &rarr;</a>
             </div>
         </div>
     </section>
@@ -117,8 +137,9 @@
     <section class="philosophy section-padding">
         <div class="container philosophy-split">
             <div class="philosophy-text">
-                <h2 class="section-title">Yalnızca Ustalık.</h2>
-                <p class="lead-text">Bu vitrin, sıradan bir sergi alanı değil. El emeğinin ve sabrın kutsandığı bir
+                <h2 class="section-title" data-i18n="phil_title">Yalnızca Ustalık.</h2>
+                <p class="lead-text" data-i18n="phil_text">Bu vitrin, sıradan bir sergi alanı değil. El emeğinin ve
+                    sabrın kutsandığı bir
                     hafıza merkezi.</p>
             </div>
         </div>
@@ -128,7 +149,7 @@
     <!-- 7. ARŞİV VURGUSU -->
     <section class="archive-note section-padding">
         <div class="container text-center">
-            <p class="archive-text">
+            <p class="archive-text" data-i18n="archive_text">
                 "Ustalık, sabırdır. Sabır ise zamanın ötesine geçebilmektir."
             </p>
         </div>
@@ -138,14 +159,15 @@
     <footer>
         <div class="container">
             <nav class="footer-nav">
-                <a href="vitrin.html">Vitrin</a>
-                <a href="sorgula.html">Sorgula</a>
-                <a href="iletisim.html">İletişim</a>
+                <a href="vitrin.html" data-i18n="nav_vitrin">Vitrin</a>
+                <a href="sorgula.html" data-i18n="nav_sorgula">Sorgula</a>
+                <a href="iletisim.html" data-i18n="nav_iletisim">İletişim</a>
             </nav>
-            <p class="copyright">© 2026 Mesut Yılmaz Tesbih Vitrini. Tüm hakları saklıdır.</p>
+            <p class="copyright" data-i18n="footer_copy">© 2026 Mesut Yılmaz Tesbih Vitrini. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 
+    <script src="translations.js"></script>
     <script src="script.js"></script>
     <script src="mobile.js"></script>
 </body>
