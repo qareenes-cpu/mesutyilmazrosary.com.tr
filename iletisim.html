@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Amiri:wght@400;700&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -19,9 +21,28 @@
                 <img src="assets/logo.svg" alt="Mesut Yılmaz">
             </a>
             <div class="nav-links" id="nav-links-container">
-                <a href="vitrin.html">Vitrin</a>
-                <a href="sorgula.html">Sorgula</a>
-                <a href="iletisim.html" class="active">İletişim</a>
+                <a href="vitrin.html" data-i18n="nav_vitrin">Vitrin</a>
+                <a href="sorgula.html" data-i18n="nav_sorgula">Sorgula</a>
+                <a href="iletisim.html" class="active" data-i18n="nav_iletisim">İletişim</a>
+
+                <!-- Language Selector -->
+                <div class="lang-dropdown">
+                    <button class="lang-btn">
+                        <span id="current-lang-display">TR</span>
+                        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2"
+                            fill="none">
+                            <path d="M6 9l6 6 6-6" />
+                        </svg>
+                    </button>
+                    <div class="lang-menu">
+                        <a href="#" class="lang-option" data-lang="tr">TR - Türkçe</a>
+                        <a href="#" class="lang-option" data-lang="en">EN - English</a>
+                        <a href="#" class="lang-option" data-lang="de">DE - Deutsch</a>
+                        <a href="#" class="lang-option" data-lang="fr">FR - Français</a>
+                        <a href="#" class="lang-option" data-lang="ar">AR - العربية</a>
+                    </div>
+                </div>
+
                 <a href="https://www.instagram.com/46mesut_yilmaz?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                     target="_blank" class="instagram-link">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -31,7 +52,7 @@
                         <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                     </svg>
                 </a>
-                <a href="admin.html" class="admin-icon-link" title="Yönetim">
+                <a href="login.html" class="admin-icon-link" title="Yönetim">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round" style="width:18px; height:18px;">
                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
@@ -50,7 +71,8 @@
     <main style="padding-top: 100px;">
         <section class="contact-section section-padding">
             <div class="container">
-                <h1 class="section-title text-center" style="margin-bottom: 60px;">Bize Ulaşın</h1>
+                <h1 class="section-title text-center" style="margin-bottom: 60px;" data-i18n="contact_title">Bize Ulaşın
+                </h1>
 
                 <div class="contact-grid">
                     <!-- Telefon -->
@@ -61,7 +83,7 @@
                                     d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
                             </svg>
                         </div>
-                        <h3>TELEFON</h3>
+                        <h3 data-i18n="contact_phone">TELEFON</h3>
                         <p class="contact-subtitle">Hafta içi her gün 09:00 - 19:00</p>
                         <a href="tel:+905350580363" class="contact-value">+90 535 058 03 63</a>
                     </div>
@@ -73,7 +95,7 @@
                                 <polyline points="22,6 12,13 2,6" />
                             </svg>
                         </div>
-                        <h3>E-POSTA</h3>
+                        <h3 data-i18n="contact_email">E-POSTA</h3>
                         <p class="contact-subtitle">Tüm sorularınız için bize yazın</p>
                         <a href="mailto:info@ahmetyilmazrosary.com" class="contact-value">info@ahmetyilmazrosary.com</a>
                     </div>
@@ -85,7 +107,7 @@
                                     d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
                             </svg>
                         </div>
-                        <h3>WHATSAPP</h3>
+                        <h3 data-i18n="contact_whatsapp">WHATSAPP</h3>
                         <p class="contact-subtitle">Hızlı bilgi ve sipariş hattı</p>
                         <a href="https://wa.me/905350580363" class="contact-value">Sohbeti Başlat</a>
                     </div>
@@ -93,20 +115,23 @@
 
                 <div class="appointment-box reveal"
                     style="background: var(--bg-secondary); padding: 40px; border-radius: 20px; margin-top: 40px;">
-                    <h2 style="margin-bottom: 20px;">ÖZEL RANDEVU ALIN</h2>
-                    <p style="margin-bottom: 30px; color: var(--text-secondary);">Koleksiyonumuzu yakından incelemek ve
+                    <h2 style="margin-bottom: 20px;" data-i18n="contact_appt_title">ÖZEL RANDEVU ALIN</h2>
+                    <p style="margin-bottom: 30px; color: var(--text-secondary);" data-i18n="contact_appt_desc">
+                        Koleksiyonumuzu yakından incelemek ve
                         özel tasarımlarımız hakkında bilgi almak için randevu oluşturabilirsiniz.</p>
 
                     <form id="appointment-form" style="display: grid; gap: 20px; max-width: 600px; margin: 0 auto;">
                         <input type="text" id="apt-name" placeholder="Adınız Soyadınız" required
+                            data-i18n="contact_form_name"
                             style="padding: 15px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.3); color: #fff;">
                         <input type="tel" id="apt-phone" placeholder="Telefon Numaranız" required
+                            data-i18n="contact_form_phone"
                             style="padding: 15px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.3); color: #fff;">
                         <input type="date" id="apt-date" required
                             style="padding: 15px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.3); color: #fff; color-scheme: dark;">
                         <textarea id="apt-message" placeholder="Mesajınız (Opsiyonel)"
                             style="padding: 15px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.3); color: #fff; height: 100px;"></textarea>
-                        <button type="submit"
+                        <button type="submit" data-i18n="contact_form_btn"
                             style="padding: 15px; border-radius: 40px; background: #0071e3; color: #fff; border: none; font-weight: 600; cursor: pointer; transition: 0.3s;">Randevu
                             Talebi Gönder</button>
                     </form>
@@ -144,9 +169,10 @@
 
     <footer style="margin-top: 50px;">
         <div class="container">
-            <p class="copyright">© 2026 Mesut Yılmaz Tesbih Vitrini. Tüm hakları saklıdır.</p>
+            <p class="copyright" data-i18n="footer_copy">© 2026 Mesut Yılmaz Tesbih Vitrini. Tüm hakları saklıdır.</p>
         </div>
     </footer>
+    <script src="translations.js"></script>
     <script src="script.js"></script>
     <script src="mobile.js"></script>
 </body>
